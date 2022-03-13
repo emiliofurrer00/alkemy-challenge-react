@@ -1,7 +1,10 @@
 import React from 'react'
 import axios from 'axios'
+import swal from '@sweetalert/with-react';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
+    const navigate = useNavigate();
 
     function handleSubmit(e){
         e.preventDefault();
@@ -14,24 +17,46 @@ function Login() {
         console.log(values);
 
         //Validations
+        //Either input is empty:
         if (!values.email || !values.password){
-            console.log('All fields are required.');
+            swal({
+                title: 'Oops!',
+                text: 'All fields are required.',
+                icon: 'error'
+            })
             return;
         }
-        
+        //Invalid email format evaluated through RegExp
         if (!emailRegexp.test(values.email)){
-            console.log('Invalid email value');
+            swal({
+                title: 'Oops!',
+                text: 'Email must have a valid format.',
+                icon: 'error'
+            })
             return;
         }
-
+        //If credentials are incorrect
         if (values.email !== 'challenge@alkemy.org' || values.password !== 'react'){
-            console.log('Invalid credentials');
+            swal({
+                title: 'Oops!',
+                text: 'Invalid credentials.',
+                icon: 'error'
+            })
             return;
         }
-
+        //No errors, proceed with request & login
         console.log('Ready to submit');
         axios.post('http://challenge-react.alkemy.org', {email: values.email, password: values.password})
-            .then(console.log)
+            .then(response => {
+                swal({
+                    title: 'Welcome!',
+                    text: 'Succesfully loged in',
+                    icon: 'success'
+                });
+                console.log(response.data.token);
+                localStorage.setItem('token', response.data.token);
+                navigate('/');
+            })
             .catch(console.error)
         ;
     }
