@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import axios from 'axios'
 import swal from '@sweetalert/with-react';
 import { useNavigate } from 'react-router-dom';
 
 function Login() {
     const navigate = useNavigate();
+
+    useEffect(()=>{
+        const token = localStorage.getItem('token');
+        if (token){
+            console.log('Ya estás logueado. Redireccionando al home...');
+            navigate('/');
+        }
+    })
 
     function handleSubmit(e){
         e.preventDefault();
@@ -62,7 +70,7 @@ function Login() {
     }
 
     return (
-        <form onSubmit={handleSubmit} >
+        <form className="login" onSubmit={handleSubmit} >
             <label>
                 <span>Email:</span><br/>
             <input type="email" name="email"></input>            
@@ -73,7 +81,7 @@ function Login() {
                 <input type="password" name="password"></input>
             </label>
             <br/>
-            <input type="submit"></input>
+            <input type="submit" value="Log in"></input>
         </form>
     )
 }

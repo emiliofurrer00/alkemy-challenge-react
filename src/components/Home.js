@@ -15,6 +15,7 @@ function Home(){
     //For development purposes
     function handleDeleteToken(){
         localStorage.removeItem('token');
+        navigate('/login');
     }
 
     return (
