@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import swal from '@sweetalert/with-react';
 import { useNavigate } from 'react-router-dom';
+import { HiOutlineMail } from 'react-icons/hi';
 
 function Login() {
     const navigate = useNavigate();
@@ -71,6 +72,7 @@ function Login() {
 
     return (
         <form className="login" onSubmit={handleSubmit} >
+            <h3>Login to your Spoontastic account</h3>
             <label>
                 <span>Email:</span><br/>
             <input type="email" name="email"></input>            
