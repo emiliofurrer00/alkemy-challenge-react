@@ -4,7 +4,7 @@ import swal from '@sweetalert/with-react';
 import { useNavigate } from 'react-router-dom';
 import { HiOutlineMail } from 'react-icons/hi';
 
-function Login() {
+function Login({setIsLoggedIn}) {
     const navigate = useNavigate();
 
     useEffect(()=>{
@@ -64,6 +64,7 @@ function Login() {
                 });
                 console.log(response.data.token);
                 localStorage.setItem('token', response.data.token);
+                setIsLoggedIn(true);
                 navigate('/');
             })
             .catch(console.error)

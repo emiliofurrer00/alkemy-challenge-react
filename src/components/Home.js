@@ -12,16 +12,9 @@ function Home(){
         }
     }, []);
 
-    //For development purposes
-    function handleDeleteToken(){
-        localStorage.removeItem('token');
-        navigate('/login');
-    }
-
     return (
         <>
             <h1>Home</h1>
-            <button onClick={handleDeleteToken}>Delete Token</button>
         </>
     )
 }

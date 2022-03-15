@@ -11,6 +11,7 @@ import './App.css';
 
 function App() {
   const [token, setToken] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(()=>{
     const savedToken = localStorage.getItem('token');
@@ -21,11 +22,11 @@ function App() {
 
   return (
     <div className="App">
-      <Header/>
+      <Header status={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       
       <Routes>
-        <Route path='/' element={<Home/>}></Route>
-        <Route path='/login' element={<Login/>}></Route>
+        <Route path='/' element={<Home />}></Route>
+        <Route path='/login' element={<Login setIsLoggedIn={setIsLoggedIn} />}></Route>
       </Routes>
 
       <Footer/>
