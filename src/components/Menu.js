@@ -1,14 +1,18 @@
 import React from 'react'
 import RecipeCard from './RecipeCard'
+import MenuStats from './MenuStats'
 
-function Menu({menuRecipes}) {
+function Menu({menuRecipes, handleRemoveFromMenu}) {
   return (
-    <ul>
-    {menuRecipes &&
-        
-            menuRecipes.map(result => <li><RecipeCard recipe={result} /></li>)}
-        
-    </ul>
+    <div className="menu-container">
+      {menuRecipes.length < 1 && <h3>Start by adding dishes to your menu!</h3> || <MenuStats menuRecipes={menuRecipes}  />}
+      <ul>
+      {menuRecipes &&
+
+              menuRecipes.map(result => <li><RecipeCard recipe={result} handleRemoveFromMenu={handleRemoveFromMenu} isInMenu /></li>)}
+              
+      </ul>      
+    </div>
   )
 }
 

@@ -40,16 +40,46 @@ ul li {
 
 .recipe-card {
   width: 300px;
-  background-color: #f5f7fa;
+  background-color: #f6f8e5;
   margin: 10px;
   padding: 10px 5px;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s;
+}
+
+.recipe-card h3 {
+  color: rgb(56, 56, 56);
+  width: 250px;
 }
 
 .recipe-card img {
   width: 250px;
   border-top-right-radius: 20px;
   border-bottom-left-radius: 20px;
+}
+
+.recipe-card:hover {
+  transform: scale(1.04);
+  box-shadow: 0px 0px 5px rgba(0,0,0,0.4);
+}
+
+.add-btn {
+  border: none;
+  background-color: #A7FF61;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.remove-btn {
+  border: none;
+  background-color: #ff6161;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .search-bar{
@@ -78,6 +108,7 @@ header {
   left: 0;
   right: 0;
   background-color: rgb(55, 165, 123);
+  z-index: 100;
 }
 
 header h1 {
