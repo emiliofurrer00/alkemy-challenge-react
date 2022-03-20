@@ -38,11 +38,11 @@ function Home(){
             return swal('Reached maximum recipes limit!');
         }
         if (dietCounter.vegan === 2 && newRecipe.vegan){
-            return swal('Reached maximum vegan recipes limit! Try adding more non-vegan dishes');
+            return swal('Reached maximum vegan recipes limit! \n Try adding more non-vegan dishes');
         }
 
         if (dietCounter.notVegan === 2 && !newRecipe.vegan){
-            return swal('Reached maximum non-vegan recipes limit! Try adding more vegan dishes');
+            return swal('Reached maximum non-vegan recipes limit! \n Try adding more vegan dishes');
         }
 
         setMenuRecipes([...menuRecipes, newRecipe]);
