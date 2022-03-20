@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { searchRecipes } from '../api/axios';
+import swal from '@sweetalert/with-react';
 import RecipeCard from './RecipeCard';
 import Menu from './Menu';
 
@@ -11,6 +12,8 @@ function Home(){
 
     const [menuRecipes, setMenuRecipes] = useState([]);
 
+    //Checks for a token in localStorage. If there isn't one, redirects user to /login.
+    //Could be improved as explained in Alkemy Academy's skill up, so no rendering would take place before the token validation
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (!token){
@@ -23,6 +26,25 @@ function Home(){
     // Must refactor
 
     function handleAddToMenu(newRecipe){
+        //Checking if menu conditions are met;
+        const dietCounter = {vegan: 0, notVegan: 0};     
+        for (let recipe of menuRecipes){
+            const key = recipe.vegan ? 'vegan' : 'notVegan';
+            dietCounter[key]++;
+        }       
+        console.log(dietCounter);    
+
+        if (menuRecipes.length === 4){
+            return swal('Reached maximum recipes limit!');
+        }
+        if (dietCounter.vegan === 2 && newRecipe.vegan){
+            return swal('Reached maximum vegan recipes limit! Try adding more non-vegan dishes');
+        }
+
+        if (dietCounter.notVegan === 2 && !newRecipe.vegan){
+            return swal('Reached maximum non-vegan recipes limit! Try adding more vegan dishes');
+        }
+
         setMenuRecipes([...menuRecipes, newRecipe]);
         setResults(prev => [...prev.filter(prevResult => prevResult.title !== newRecipe.title)])
     }
@@ -31,7 +53,8 @@ function Home(){
         setMenuRecipes(prev => [...prev.filter(prevResult => prevResult.title !== recipeToRemove.title)])
     }
 
-
+    //function handler for API complex search query.
+    //Could expand it with more user-selectable parameters like number of results or search given an specific diet
     async function handleSearch(){
         console.log(recipeSearch);
         const queryResults = await searchRecipes(recipeSearch);
@@ -46,7 +69,7 @@ function Home(){
                 <button disabled={recipeSearch.length < 2} onClick={handleSearch}> Search</button>                
             </div>
             {results && 
-            <ul>
+            <ul className="results-list">
                 {results.map(result => <li><RecipeCard recipe={result} handleAddToMenu={handleAddToMenu} /></li>
             )}
             </ul>}
