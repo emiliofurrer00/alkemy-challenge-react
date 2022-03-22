@@ -1,6 +1,15 @@
-# Getting Started with Create React App
+# 🥄Spoontastic <Alkemy React Challenge\>
+Single Page Application made as a solution to Alkemy's front-end React Challenge. 
+Search and pick your favorite recipes and make your ideal menu with this simple webapp!
+It features a simple login with localStorage token checkup, redirection with react-router-dom. Recipes data is fetched from Spoonacular API.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 🛠 Technologies used:
+React && react-router-dom;
+axios;
+sweet-alert;
+react-icons;
+react-modal;
+jest;
 
 ## Available Scripts
 
