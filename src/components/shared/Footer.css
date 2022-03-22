@@ -1,0 +1,19 @@
+footer {
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 40px;
+}
+  
+footer .icon {
+    color: rgb(23, 165, 111);;
+    width: 35px;
+    height: 35px;
+    transition: transform 0.5s;
+}
+
+footer .icon:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}

@@ -1,0 +1,36 @@
+header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 60px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(55, 165, 123);
+    z-index: 100;
+}
+
+header h1 {
+    color: white;
+    cursor: pointer;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.log-out-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: color 0.3s;
+    color: rgb(240, 240, 240);
+}
+
+.log-out-btn:hover {
+    color: rgb(255, 255, 255);
+}

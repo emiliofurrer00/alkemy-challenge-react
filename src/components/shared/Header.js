@@ -1,6 +1,7 @@
 import { GiSpoon } from 'react-icons/gi';
 import { useNavigate } from 'react-router-dom';
 import { FiLogOut } from 'react-icons/fi';
+import './Header.css';
 
 function Header({status, setIsLoggedIn}){
     const navigate = useNavigate();

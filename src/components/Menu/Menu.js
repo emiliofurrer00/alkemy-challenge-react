@@ -1,6 +1,6 @@
 import React from 'react'
-import RecipeCard from './RecipeCard'
-import MenuStats from './MenuStats'
+import RecipeCard from '../RecipeCard/RecipeCard'
+import {MenuStats} from '../MenuStats'
 
 function Menu({menuRecipes, handleRemoveFromMenu}) {
   return (
@@ -9,7 +9,7 @@ function Menu({menuRecipes, handleRemoveFromMenu}) {
       <ul>
       {menuRecipes &&
 
-              menuRecipes.map(result => <li><RecipeCard recipe={result} handleRemoveFromMenu={handleRemoveFromMenu} isInMenu /></li>)}
+              menuRecipes.map((result) => <li key={result.id}><RecipeCard recipe={result} handleRemoveFromMenu={handleRemoveFromMenu} isInMenu /></li>)}
               
       </ul>      
     </div>

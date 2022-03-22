@@ -1,4 +1,6 @@
-/* Must replace with "display: grid" later */
+/* Must complement with "display: grid" later */
+/* Should migrate to styled-components for modularization and ease of conditional styling */
+
 .App {
   text-align: center; 
   min-height: 100vh;
@@ -26,6 +28,10 @@
 .recipe-stats {
   text-align: left;
 
+}
+
+h3 {
+  color: #313131;
 }
 
 .menu-container {
@@ -68,7 +74,7 @@ ul li {
 
 .recipe-card h3 {
   color: rgb(56, 56, 56);
-  width: 250px;
+  width: 270px;
 }
 
 .recipe-card img {
@@ -78,8 +84,8 @@ ul li {
 }
 
 .recipe-card:hover {
-  transform: scale(1.04);
-  box-shadow: 0px 0px 5px rgba(0,0,0,0.4);
+  transform: scale(1.03);
+  box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
 }
 
 .add-btn {
@@ -104,6 +110,12 @@ ul li {
   padding: 10px;
   border-radius: 5px;
   cursor: pointer;
+  text-decoration: none;
+}
+
+/* Should give them a separate common class */
+.add-btn:hover, .details-btn:hover, .remove-btn:hover {
+  opacity: 0.90;
 }
 
 .search-bar{
@@ -112,109 +124,10 @@ ul li {
 
 .search-bar input, .search-bar button {
   border: none;
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   padding: 5px;
 }
 
 .search-bar button {
   cursor: pointer;
 }
-
-/* Header styles */
-
-header {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 60px;
-  position: sticky;
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: rgb(55, 165, 123);
-  z-index: 100;
-}
-
-header h1 {
-  color: white;
-  cursor: pointer;
-}
-
-.logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.log-out-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  transition: color 0.3s;
-  color: rgb(240, 240, 240);
-}
-
-.log-out-btn:hover {
-  color: rgb(255, 255, 255);
-}
-
-/* Footer styles */
-
-footer {
-  padding: 10px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 40px;
-}
-
-footer .icon {
-  color: rgb(23, 165, 111);;
-  width: 35px;
-  height: 35px;
-  transition: transform 0.5s;
-}
-
-footer .icon:hover {
-  transform: scale(1.1);
-  cursor: pointer;
-}
-
-/* Login view styles */
-
-.login {
-  border: 1px solid rgb(179, 179, 179);
-  border-radius: 10px;
-  width: min-content;
-  padding: 20px;
-  align-self: center;
-  box-shadow: 0px 0px 10px rgba(0,0,0,0.2);  
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  background-color: rgb(248, 248, 248);
-}
-
-.login label > * {
-  margin: 10px;
-}
-
-.login input[type='email'],  .login input[type='password']{
-  padding: 10px;
-  border-color: rgba(0,0,0,0.1);
-}
-
-.login input[type="submit"]{  
-  border: none;
-  padding: 10px 20px;
-  background-color: rgb(51, 153, 237);
-  color: white;
-  border-radius: 5px;
-}
-
-.login input[type="submit"]:hover{  
-  cursor: pointer;
-  background-color: rgb(85, 171, 242);
-}
-

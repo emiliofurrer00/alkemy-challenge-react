@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 //Components
-import Login from './components/Login';
-import Home from './components/Home';
-import Header from './components/Header';
-import Footer from './components/Footer'
+import Login from './components/Login/Login';
+import Home from './components/Home/Home';
+import Header from './components/shared/Header';
+import Footer from './components/shared/Footer';
+import RecipeDetails from './components/RecipeDetails/RecipeDetails';
 
 import './App.css';
 
@@ -27,6 +28,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />}></Route>
         <Route path='/login' element={<Login setIsLoggedIn={setIsLoggedIn} />}></Route>
+        <Route path='/recipes/:recipeId' element={<RecipeDetails />} />
       </Routes>
 
       <Footer/>

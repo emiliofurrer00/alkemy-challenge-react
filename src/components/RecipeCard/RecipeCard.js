@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FaHandHoldingHeart } from 'react-icons/fa';
 import { GiForkKnifeSpoon } from 'react-icons/gi';
 import { MdOutlinePriceChange } from 'react-icons/md';
+import RecipeDetails from '../RecipeDetails/RecipeDetails';
 
 function RecipeCard({recipe, handleAddToMenu, handleRemoveFromMenu, isInMenu = false}) {
+
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
   
   const handleClick = isInMenu ? handleRemoveFromMenu : handleAddToMenu;
 
@@ -18,9 +25,9 @@ function RecipeCard({recipe, handleAddToMenu, handleRemoveFromMenu, isInMenu = f
       </div>
       <div className="recipe-actions">
         <button className={isInMenu ? "remove-btn" : "add-btn"} onClick={() => handleClick(recipe)}>{isInMenu ? "Remove" : "Add recipe" }</button>
-        <button className="details-btn">Show Details</button>        
+        <button className="details-btn" onClick={openModal}>Show Details</button>       
       </div>
-
+      {modalIsOpen && <RecipeDetails isOpen={modalIsOpen} setIsOpen={setIsOpen} recipe={recipe} />}
     </section>
   )
 }

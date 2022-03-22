@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { searchRecipes } from '../api/axios';
+import { searchRecipes } from '../../api/axios';
 import swal from '@sweetalert/with-react';
-import RecipeCard from './RecipeCard';
-import Menu from './Menu';
+import RecipeCard from '../RecipeCard/RecipeCard';
+import Menu from '../Menu/Menu';
 
 function Home(){
     const navigate = useNavigate();
@@ -70,7 +70,7 @@ function Home(){
             </div>
             {results && 
             <ul className="results-list">
-                {results.map(result => <li><RecipeCard recipe={result} handleAddToMenu={handleAddToMenu} /></li>
+                {results.map((result, index) => <li key={index}><RecipeCard recipe={result} handleAddToMenu={handleAddToMenu} /></li>
             )}
             </ul>}
         </div>
